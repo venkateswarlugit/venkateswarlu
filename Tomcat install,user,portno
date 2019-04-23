@@ -1,0 +1,45 @@
+cd /opt
+
+wget http://mirrors.estointernet.in/apache/tomcat/tomcat-8/v8.5.37/bin/apache-tomcat-8.5.37.tar.gz
+
+tar xzf apache-tomcat-8.5.37.tar.gz
+
+cd apache-tomcat-8.5.37
+
+ls -lrt(folder struct)
+bin BUILDING.txt conf CONTRIBUTING.md lib LICENSE logs NOTICE README.md RELEASE-NOTES RUNNING.txt tempwebapps  work
+
+cd apache-tomcat-8.5.37/bin
+
+startup.sh or sh startup.sh
+
+netstat -plunt | grep :8080
+
+To Change Port No
+cd conf ->
+       vi sever.xml(change 8888)
+        or
+	   sed command
+
+To Tomcat Create User
+conf -> 
+       vi tomcat-users.xml
+	    <role rolename="manager-gui"/>
+		<role rolename="manager-script"/>
+		<user username="tomcat" password="tomcat" roles="manager-gui,manager-script"/>
+
+
+To check logs
+      catlina.out
+      tail 100f
+      ps -eaf | grep tomcat
+      ps aux | grep java
+
+
+
+
+
+cd /opt/apache-tomcat-8.5.37/webapps/manager/ META-INF
+vi context.xml
+<!--  <Valve className="org.apache.catalina.valves.RemoteAddrValve"
+         allow="127\.\d+\.\d+\.\d+|::1|0:0:0:0:0:0:0:1" />-->

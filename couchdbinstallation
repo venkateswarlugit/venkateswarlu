@@ -1,0 +1,29 @@
+Enable Epel repo
+
+To create repo
+vi /etc/yum.repos.d/bintray-apache-couchdb-rpm.repo
+[bintray--apache-couchdb-rpm]
+name=bintray--apache-couchdb-rpm
+baseurl=http://apache.bintray.com/couchdb-rpm/el7/$basearch/
+gpgcheck=0
+repo_gpgcheck=0
+enabled=1
+
+To install couchdb
+yum install couchdb
+
+To start service
+service couchdb start
+
+netstat -plunt | grep 5984
+
+cd /opt/couchdb/etc/default.ini
+[chttpd]
+port = 5984
+bind_address = 0.0.0.0
+ 
+ 
+service couchdb restart
+
+Open brower 
+http://<ipadress> or  localhost :5984/_utils/#/_all_dbs

@@ -1,0 +1,11 @@
+java -version
+
+cd /tmp
+wget http://www-us.apache.org/dist/tomcat/tomcat-7/v7.0.82/bin/apache-tomcat-7.0.82.tar.gz
+
+tar xzf apache-tomcat-7.0.82.tar.gz
+mv apache-tomcat-7.0.82 /usr/local/tomcat7
+
+cd /usr/local/tomcat7
+
+./bin/startup.sh

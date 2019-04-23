@@ -1,0 +1,67 @@
+OPEN JDK
+yum install java-1.8.0-openjdk -y
+yum install java-1.8.0-openjdk-devel -y
+
+alternatives --config java
+alternatives --config javac
+
+
+INSTALLING ORACLE JAVA(jdk-8u201)
+
+LINK:-https://download.oracle.com/otn-pub/java/jdk/8u201-b09/42970487e3af4f5aa5bca3f542482c60/jdk-8u201-linux-x64.tar.gz
+
+cd /opt
+
+wget --no-cookies --no-check-certificate --header "Cookie: gpw_e24=http%3A%2F%2Fwww.oracle.com%2F; oraclelicense=accept-securebackup-cookie" "https://download.oracle.com/otn-pub/java/jdk/8u201-b09/42970487e3af4f5aa5bca3f542482c60/jdk-8u201-linux-x64.tar.gz"
+
+tar xzf jdk-8u201-linux-x64.tar.gz
+
+cd /opt/jdk1.8.0_201/
+
+alternatives --install /usr/bin/java java /opt/jdk1.8.0_201/bin/java 2
+alternatives --config java
+
+
+alternatives --install /usr/bin/jar jar /opt/jdk1.8.0_201/bin/jar 2
+alternatives --install /usr/bin/javac javac /opt/jdk1.8.0_201/bin/javac 2
+alternatives --set jar /opt/jdk1.8.0_201/bin/jar
+alternatives --set javac /opt/jdk1.8.0_201/bin/javac
+
+
+vi /etc/profile.d/java.sh
+
+export JAVA_HOME=/opt/jdk1.8.0_201
+export JRE_HOME=/opt/jdk1.8.0_201/jre
+export PATH=$PATH:/opt/jdk1.8.0_201/bin:/opt/jdk1.8.0_201/jre/bin
+
+source /etc/profile.d/java.sh
+
+
+
+ORACLE JAVA(jdk1.8.0_191)
+cd /opt/
+
+yum install wget
+
+wget --no-cookies --no-check-certificate --header "Cookie: gpw_e24=http%3A%2F%2Fwww.oracle.com%2F; oraclelicense=accept-securebackup-cookie" "https://download.oracle.com/otn-pub/java/jdk/8u191-b12/2787e4a523244c269598db4e85c51e0c/jdk-8u191-linux-x64.tar.gz"
+
+tar xzf jdk-8u191-linux-x64.tar.gz
+
+cd /opt/jdk1.8.0_191/
+alternatives --install /usr/bin/java java /opt/jdk1.8.0_191/bin/java 2
+alternatives --config java
+
+alternatives --install /usr/bin/jar jar /opt/jdk1.8.0_191/bin/jar 2
+alternatives --install /usr/bin/javac javac /opt/jdk1.8.0_191/bin/javac 2
+alternatives --set jar /opt/jdk1.8.0_191/bin/jar
+alternatives --set javac /opt/jdk1.8.0_191/bin/javac
+
+vi /etc/profile.d/java.sh
+
+
+export JAVA_HOME=/opt/jdk1.8.0_191
+export JRE_HOME=/opt/jdk1.8.0_191/jre
+export PATH=$PATH:/opt/jdk1.8.0_181/bin:/opt/jdk1.8.0_191/jre/bin
+source /etc/profile.d/java.sh
+
+java -version
