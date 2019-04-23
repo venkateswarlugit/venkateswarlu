@@ -1,0 +1,24 @@
+---
+ - hosts: localhost
+   tasks:
+     - name: check tomcat install or not
+       stat:
+         path: /opt/apache-tomcat-8.5.37
+       register: tom_result
+     - name: download tomcat
+       get_url:
+         url: http://mirrors.wuchna.com/apachemirror/tomcat/tomcat-8/v8.5.37/bin/apache-tomcat-8.5.37.tar.gz
+         dest: /opt
+       when: tom_result.stat.exists == False
+     - name: chk tomcat fol exist or not
+       stat:
+         path: /opt/apache-tomcat-8.5.37
+       register: ext_result
+     - name: extract tomcat
+       unarchive:
+         src: /opt/apache-tomcat-8.5.37.tar.gz
+         dest: /opt
+         remote_src: True
+       when: ext_result.stat.exists == False
+     - name: Start service httpd
+       command: /opt/apache-tomcat-8.5.37/bin/startup.sh

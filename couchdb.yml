@@ -1,0 +1,22 @@
+---
+ - hosts: localhost
+   tasks:
+     - name: creating couchdb repo and key [bintray--apache-couchdb-rpm]
+       yum_repository:
+         name: bintray--apache-couchdb-rpm
+         description: couchdb repo
+         file: external_repos
+         baseurl: http://apache.bintray.com/couchdb-rpm/el7/$basearch/
+         gpgcheck: 1
+         repo_gpgcheck: 0
+         enabled: 1
+     - name: installing couchdb
+       yum:
+         name: couchdb
+         state: present
+     - name: starting couchdb
+       shell: service couchdb start
+
+
+reference link:
+http://docs.couchdb.org/en/latest/install/unix.html#installation-using-the-apache-couchdb-convenience-binary-packages
